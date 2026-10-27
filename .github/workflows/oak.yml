@@ -1,0 +1,32 @@
+name: "UMBRA"
+run-name: "portland"
+"on":
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+concurrency:
+  group: "dune"
+  cancel-in-progress: false
+jobs:
+  SITKA:
+    runs-on: ubuntu-22.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.MOSAIC.outputs.page_url }}
+    steps:
+      - name: "damson"
+        uses: actions/checkout@v7
+      - name: "Flora"
+        uses: actions/configure-pages@v5
+      - name: "Rapids"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: "buckeye"
+        id: MOSAIC
+        uses: actions/deploy-pages@v4
